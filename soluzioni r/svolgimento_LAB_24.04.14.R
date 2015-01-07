@@ -14,7 +14,7 @@ data.matrix.test <- data.matrix[-index.random,]
 model.radial.svm <- tune.svm(Type~.,kernel="radial", gamma=10^(-6:-1), cost=10^(1:2), data=data.matrix.train)
 final.model <- svm(Type~., kernel="radial", data=data.matrix.train, gamma=0.1, cost=10)
 
-pred.final.model <- predict(final.model, data.matrix.test[,-1]) #????
+pred.final.model <- predict(final.model, data.matrix.test)
 conf.matrix <- table(true=data.matrix.test[,1], pred= pred.final.model)
 
 classAgreement(conf.matrix)$diag
