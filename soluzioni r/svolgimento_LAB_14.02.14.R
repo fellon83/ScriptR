@@ -24,10 +24,11 @@ index.random <- sort(sample(nrow(data.frame), size=nrow(data.frame)*0.75, replac
 data.train <- data.frame[index.random, ]
 data.test <- data.frame[-index.random, ]
 
-#verifico se l'ultima colonna è Factor 
+#verifico se la colonna di classificazione è Factor 
 str(data.frame)
 
 #effettuo il knn
+library(class)
 pred <- knn(data.train[,-9], data.test[,-9], data.train[,9], k=3, prob=F)
 
 #creo una matrice di confusione
