@@ -6,7 +6,7 @@ data("PimaIndiansDiabetes2")
 #"rinomino" per una facilità di lettura
 data.frame <- PimaIndiansDiabetes2
 
-#rimuovogli i valori na visto che dovremo svolgere un knn, sono presenti nelle colonne 2:6
+#rimuovo i valori na presenti nelle colonne 2:6,valori non ammessi in un knn
 
 for (c in 2:6) {
 	valore.medio <- round(mean(data.frame[,c], na.rm=T))
