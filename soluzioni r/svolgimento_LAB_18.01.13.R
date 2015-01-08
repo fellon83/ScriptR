@@ -24,9 +24,9 @@ corpusC <- tm_map(corpusC, stemDocument) #stemming del documento
 #verifica del corpus selezionandone solo una parte
 inspect(corpusC[1:3])
 
-#creo la matrice documenti-termini e rimuovo i termini con elevata sparsità
+#creo la matrice documenti-termini e rimuovo i termini con elevata sparsitÃ 
 dtm <- DocumentTermMatrix(corpusC, control=list(weighting=weightTf))
-dtm_final<- removeSparseTerms(dtm, sparse=0.88) #la sparsità è calcolata a tentativi
+dtm_final<- removeSparseTerms(dtm, sparse=0.88) #la sparsitÃ  Ã¨ calcolata a tentativi
 
 #verifico i token
 show(dtm_final)
@@ -45,8 +45,9 @@ data.matrix.train <- data.matrix[index.random,]
 data.matrix.test <- data.matrix[-index.random,]
 
 #training con kernel radiale con gamma 10 e costo slack variable 5
-model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=5, data=data.matrix.train)
-
+#ATTENZIONE! LA TRACCIA RICHIEDE COSTO 10!
+#model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=5, data=data.matrix.train)
+model.radial.svm <- svm(model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=10, data=data.matrix.train)
 #classifico i documenti nel test set
 pred.model<-predict(model.radial.svm, data.matrix.test[,-1])
 
