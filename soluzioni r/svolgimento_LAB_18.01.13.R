@@ -44,10 +44,8 @@ index.random <-sample(nrow(data.matrix), size=nrow(data.matrix)*0.8, replace=F)
 data.matrix.train <- data.matrix[index.random,]
 data.matrix.test <- data.matrix[-index.random,]
 
-#training con kernel radiale con gamma 10 e costo slack variable 5
-#ATTENZIONE! LA TRACCIA RICHIEDE COSTO 10!
-#model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=5, data=data.matrix.train)
-model.radial.svm <- svm(model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=10, data=data.matrix.train)
+#training con kernel radiale con gamma 10 e costo slack variable 10
+model.radial.svm <- svm(LABEL~.,kernel="radial", gamma=10, cost=10, data=data.matrix.train)
 #classifico i documenti nel test set
 pred.model<-predict(model.radial.svm, data.matrix.test[,-1])
 
