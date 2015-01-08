@@ -3,10 +3,10 @@ rm(list=ls())
 
 library(mlbench)
 data("PimaIndiansDiabetes2")
-#"rinomino" per una facilità di lettura
+#"rinomino" per una facilitÃ  di lettura
 data.frame <- PimaIndiansDiabetes2
 
-#rimuovogli i valori na visto che dovremo svolgere un knn, sono presenti nelle colonne 2:6
+#FIXHEREPLS --->rimuovogli<--- i valori na visto che dovremo svolgere un knn, sono presenti nelle colonne 2:6
 
 for (c in 2:6) {
 	valore.medio <- round(mean(data.frame[,c], na.rm=T))
@@ -24,7 +24,7 @@ index.random <- sort(sample(nrow(data.frame), size=nrow(data.frame)*0.75, replac
 data.train <- data.frame[index.random, ]
 data.test <- data.frame[-index.random, ]
 
-#verifico se l'ultima colonna è Factor 
+#verifico se l'ultima colonna Ã¨ Factor 
 str(data.frame)
 
 #effettuo il knn
