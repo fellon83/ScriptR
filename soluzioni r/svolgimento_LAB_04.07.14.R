@@ -24,6 +24,11 @@ dtm_final <- removeSparseTerms(dtm, sparse=0.85)
 
 findFreqTerms(dtm_final)
 
+m = as.matrix(TDM_final)
+word_freqs = sort(colSums(m), decreasing=TRUE)
+dm = data.frame(word=names(word_freqs), freq=word_freqs)
+wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+
 dist_euclid <- dist(dtm_final, method="euclidean")
 hc_complete <- hclust(dist_euclid, method="complete")
 
